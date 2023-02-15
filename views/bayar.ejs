@@ -1,0 +1,68 @@
+<html>
+  <head>
+		<link rel="shortcut icon" href="/img/logo-papic.png"/>
+		<title>Papic Clothing - CheckOut</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="/style/Bayar.css">
+		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  </head>
+	<body>
+		<!-- Header class -->
+		<a id="home">home</a>
+		<div class="card3" id="header">
+			<a href="#home"><img id="logo" src="../img/logo-papic.png"></a>
+			<!--Navbar-->
+			<a id="left-navbar" style="cursor: pointer;" href="/">Home</a>
+			<a id="right-navbar" style="float: right; font-weight:300; margin-right: 100px;" href="/logout"><i class="fa fa-sign-in"></i> Log Out</a>
+		</div>
+		<!-- BODY -->
+    <div></div>
+		<div class="card3" id='body-header'>
+      <h1>Detail Pembayaran</h1>
+      <table id="table-pembayaran">
+        <thead>
+          <th>Komponen</th>
+          <th>Value</th>
+          <th>Harga</th>
+        </thead>
+        <tr>
+          <td>Baju</td>
+          <td><%- baju.namaModel %></td>
+          <td>Rp <%- baju.hargaBaju %></td>
+        </tr>
+        <tr>
+          <td>Bahan</td>
+          <td><%- baju.namaBahanBaku %></td>  
+          <td>Rp <%- baju.hargaJualBahan %></td>
+        </tr>
+        <tr>
+          <td>Ukuran</td>
+          <td><%- baju.Ukuran %></td>
+          <td>Rp 0</td>
+        </tr>
+        <tr>
+          <td>Aksesoris</td>
+          <td><%- baju.namaAksesoris %></td>
+          <td>Rp <%- baju.hargaJualAksesoris %></td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td></td>
+          <td>Rp <%- baju.hargaTotal %></td>
+        </tr>
+      </table><br>
+      <span>Total bayar: Rp <%- baju.hargaTotal %>,-</span>
+      <br>
+      <form action="/pay_upload?id=<%- baju.idTransaksi %>" method='POST' enctype="multipart/form-data">
+        <input id="input-buktibayar" type="file" name='buktibayar'><br><br>
+        <h1 style="margin-top:0px;">Mohon upload bukti pembayaran </h1>
+        <button id='bayar'>Bayar</button>
+      </form>
+      
+		</div>
+
+		<script>
+		</script>
+	</body>
+</html>

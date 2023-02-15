@@ -1,0 +1,387 @@
+@font-face {
+    font-family: reguler;
+    src:url(../fonts/Montserrat-Regular.ttf)
+}
+@font-face {
+    font-family: bold;
+    src: url(../fonts/Montserrat-ExtraBold.ttf);
+}
+
+.tableisian tr,td{
+  border-bottom: groove;
+}
+
+.tableisian{
+  width: 100%;
+  font-size: 20px;
+  border-collapse: collapse;
+}
+
+.select2{
+  height: 50px;
+  width: 100%;
+  font-size: 18px;
+  border: none;
+}
+
+.select2:hover{
+  background-color: aliceblue;
+  cursor: pointer;
+}
+
+.card3{
+box-shadow: rgba(255, 255, 255, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+background-color:rgba(255, 255, 255, 0.900);
+}
+
+.bodycard{
+  box-shadow: rgba(255, 255, 255, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  background-color:rgba(255, 255, 255, 0.900);
+  width: 75%;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 1000px;
+  overflow: hidden;
+}
+  .bodycard a{
+    text-decoration: none;
+  }
+
+  .bodycard a:hover{
+    text-decoration: underline;
+    color:teal;
+  }
+
+html{
+  scroll-behavior: smooth;
+}
+
+body {
+font-family: reguler;
+background-image: url(../img/bg2.jpg);
+background-color: #ffff;
+background-size: cover;
+}
+
+span {
+  font-family: bold; 
+  margin: 50px 0px 50px 50px; 
+  font-size: 30px; 
+  font-weight: bold;
+}
+
+#category{
+  margin-left: 30px; 
+  font-size: 15px;
+}
+
+
+#header{
+    background-color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 150px;
+    font-family: reguler;
+    opacity: 90%;
+    transition: 0.3s;
+}
+  #header-text{
+    top: 10px;
+    margin: 10px;
+  }
+
+  #header:hover{
+    opacity: 100%;
+    transition:0.3s;
+  }
+
+  #logo{
+    margin: 0px 80px 80px 10%; 
+    width: 150px; 
+    height: fit-content; 
+    top: 0;
+    margin-bottom: 110px;
+  }
+
+
+
+button:active {
+	transform: scale(0.95);
+}
+
+#header #left-navbar{
+    text-decoration: none;
+    color: black;
+    margin: 0px 30px;
+    vertical-align: 50px;
+    line-height: 150px;
+    font-size: 24px;
+}
+
+#header #right-navbar{
+    text-decoration: none;
+    color: black;
+    margin: 0px 10px;
+    line-height: 150px;
+    float: right;
+    font-size: 24px;
+}
+
+#header input{
+    margin-top: 65px;
+    line-height: 10px;
+    text-decoration: #173695;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-color: #173695;
+}
+
+#header a:hover{
+    font-weight: bolder;
+    color:teal;
+}
+
+#right-navbar a:hover{
+    font-weight: bolder;
+    color:teal;
+    text-decoration: underline;
+}
+
+#right-navbar{
+    display: inline;
+}
+
+#bodytitle{
+  margin-top: 110px;
+}
+
+#body-header{
+    margin-top: 165px;
+    height: 700px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#body-header a{
+   margin-left: 200px;
+   color: black;
+   float: left;
+}
+
+#btn_startshop{
+    height: 50px;
+    background-color: #FF5934; 
+    border-radius: 10px;
+    color: white; 
+    font-family: bold;
+    width: 250px;
+    margin-top: 15px;
+    border: none;
+}
+
+#btn_startshop:hover{
+    cursor: pointer;
+    background-color: teal;
+}
+
+#carousel{
+    float: right;
+    margin-top: 1%;
+    margin-right: 5%;
+    background-repeat: no-repeat; 
+    height: 100%; 
+    width: fit-content;
+    background-position: right;
+}
+
+#biglogo{
+  width: 100%; 
+  height:fit-content;
+  margin: 5% 65px 0px 100px;
+  }
+
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+#body-aturakun{
+  height: 1000px;
+  transition: 0.5s;
+}
+
+#imgmodel{
+  height: 50px;
+  width: auto;
+}
+
+div.scrollmenu {
+    overflow-x: auto; 
+    overflow-y: scroll;
+    white-space: nowrap; 
+    height: 500px; 
+    width: 90%; 
+    margin-left: auto; 
+    margin-right: auto; 
+    height: 500px;
+    margin-left: auto; 
+    margin-right: auto; 
+  }
+    
+      #btn_tambahakun{
+        height: 50px;
+        background-color: #173695; 
+        color: white; 
+        font-family: bold;
+        width: 20%;
+        margin-top: 15px;
+        border: none;
+        margin-left: 5%;
+        border-radius: 10px;
+    }
+    
+    #btn_tambahakun:hover{
+        cursor: pointer;
+        background-color: teal;
+    }
+
+    .btn_tambah{
+      height: 50px;
+      background-color: #FF5934; 
+      color: white; 
+      font-family: bold;
+      width: 20%;
+      margin-top: 15px;
+      border: none;
+      margin-left: 5%;
+      border-radius: 10px;
+    }
+
+    
+    .btn_tambah1{
+      height: 0px;
+     
+    }
+    
+    .btn_tambah:hover{
+        cursor: pointer;
+        background-color: teal;
+    }
+
+    #form-tambahakun{
+      font-family: bold;
+      margin: 50px 0 0 5%;
+      background-color: white;
+      width: 0px;
+      height: 0px;
+      padding: 10px 20px 10px 20px;
+      color: white;
+      border-radius: 10px;
+      font-size: 20px;
+      display: block;
+      transition: 1s;
+      overflow: hidden;
+    }
+
+    #btn_entertambahakun{
+      height: 50px;
+        background-color: white; 
+        color: #173695; 
+        font-family: bold;
+        width: 50%;
+        margin-top: 15px;
+        border: none;
+        margin: 20px 50%;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    #btn_delete{
+      font-size: 30px;
+      border: none;
+      transition: 0.1s;
+      cursor: pointer;
+      width: 95%;
+      height: 100%;
+    }
+
+    #btn_delete:hover{
+      font-size: 35px;
+      background-color: grey;
+    }
+
+    #delete{
+      text-align: center;
+    }
+    
+    #table-pemesanan{
+      width: 85%;
+      margin: auto;
+    }
+
+    #table-tambahakun td{
+      border-style: none;
+    }
+
+    #table-tambahakun tr{
+      margin-bottom: 50px;
+    }
+
+      #table-tambahakun-masukan{
+        margin-left: 50px;
+      }
+      #table-tambahakun-select{
+        margin-left: 50px;
+      }
+
+.contact{
+    text-align: center;
+}
+
+.contact a{
+    font-size: 80px;
+    margin-right: 20px;
+}
+
+.contact a:hover{
+    color: teal;
+}
+
+.contact i{
+    color: white;
+}
+
+.footer{
+  background-color: #ffff;
+  height: 500px;
+  float: left; 
+  width: 100%;
+}
+
+.footer-text p{
+text-align: left;
+font-family: reguler; 
+color: black; 
+font-weight: lighter;
+font-size: 40px; 
+margin-left: 150px;
+}
+.footer-text a{
+  text-align: le;
+  font-family: reguler; 
+  color: rgba(0, 0, 0, 0.733); 
+  font-weight: lighter;
+  font-size: 20px;
+  margin-left: 150px;
+  float: left;
+}
+
+#logobawah{
+margin: 50px 700px 30px 100px;
+width: 400px; 
+height: fit-content;
+}

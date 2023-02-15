@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="shortcut icon" href="/img/logo-papic.png"/>
+		<title>Papic Food - Admin Home Page</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="/style/homeadmin.css">
+		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+		<a id="home">.</a>
+	</head>
+	<body>
+		<!-- Header class -->
+		<div class="card3" id="header">
+			<a href="#home"><img id="logo" src="/img/logo-papic.png"></a>
+			<!--Navbar-->			
+			<a id="right-navbar" style="float: right; font-weight:300; margin-right: 100px;" href="/logout"><i class="fa fa-user"></i> Log out</a>
+			
+		</div>
+		<!-- BODY -->
+		<div class="card3" id="body-header">
+			<div style="float: left;">
+				<br><br><br><br><br><br><br><br>
+			<a class="" style="font-weight: 1000; font-size: 70px; font-family: bold; text-decoration: none;">
+				WELCOME, ADMIN
+			</a>
+			<br><br><br>
+			<a style=" float: left;font-size: 24px;margin-top: 20px;">
+				Tempat Custom Baju Online Terbaik
+			</a>
+			<br>
+			<a style="float: left;font-size: 24px;">
+				Dengan Harga Terjangkau
+			</a>
+			<br>
+			<a href="#aturpemesanan">
+				<button id="btn_startshop" type="button">Atur Pemesanan</button><br>
+			</a><br>
+			<a href="#aturakun">
+				<button id="btn_startshop" type="button">Atur Akun Costumer</button>
+			</a>
+			</div>
+
+			<div id="carousel">
+				<div id="biglogo">
+					<div class="mySlides fade">
+						<!--Gambar Dalam Carousel 1-->
+						<img src="/img/logo-papic.png" style="height: 500px;"><br><br><br><br><br><br><br><br>
+						<a id="model">.</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--Pemesanan-->
+		<a id="aturpemesanan" style="color: white;"></a>
+		<div class="bodycard" id="body-pemesanan">
+			<br><br>
+			<div id="judul">
+				<span style="">Pemesanan</span>
+				<a id="category" href="#aturakun">Atur Akun Costumer</a>
+			</div> 
+			<br>
+			<div id="voucher">
+				<a id="voucher-nama">SEARCH</a>
+				<a style="float: right; margin-right: 20px;"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+				<div id="voucher-content">
+					<input id="voucher-content-input" placeholder="Masukan Nomor Transaksi" type="text"><br><br>
+					<button id="voucher-content-btn">SEARCH</button>
+				</div>
+			</div>
+			<br><br>
+			<div class="scrollmenu" id="scrollmenu">
+				<table id="table-pemesanan">
+					<thead>
+						<th>No.</th>
+						<th>Nomor transaksi</th>
+						<th>Nama Pembeli</th> 
+						<th>Link Bukti Pembayaran</th>
+						<th>Status Pembayaran</th>
+						<th>Progress Pesanan</th>
+						<th>Status Pesanan</th>
+						<th>Edit</th>
+					</thead>
+					<% for(let i = 0; i < transaksi.length; i++){ %>
+						<tr>
+							<td><%= i+1 %></td>
+							<td><%- transaksi[i].idTransaksi %></td>
+							<td><%- transaksi[i].namaPengguna %></td>
+							<td><a href="/uploads/<%- transaksi[i].buktiTransfer %>"><%- transaksi[i].buktiTransfer %></a></td>
+							<td>
+								<select>
+									<option <%- transaksi[i].statPembayaran === 'validasi pembayaran valid' ? 'selected="selected"' : '' %>>valid</option>
+									<option <%- transaksi[i].statPembayaran  === 'validasi pembayaran tidak valid' ? 'selected="selected"' : '' %>>tidak valid</option>
+								</select>
+							<td>
+								<select>
+									<option <%- transaksi[i].progresPesanan === 'validasi pembayaran' ? 'selected="selected"' : '' %>>validasi pembayaran</option>
+									<option <%- transaksi[i].progresPesanan === 'pembuatan pola' ? 'selected="selected"' : '' %>>pembuatan pola</option>
+									<option <%- transaksi[i].progresPesanan === 'pengiriman' ? 'selected="selected"' : '' %>>pengiriman</option>
+									<option <%- transaksi[i].progresPesanan === 'sudah diterima' ? 'selected="selected"' : '' %>>sudah diterima</option>
+								</select>
+							</td>
+							<td>
+								<select>
+									<option <%- transaksi[i].statPemesanan === 'pesanan selesai' ? 'selected="selected"' : '' %>>selesai</option>
+									<option <%- transaksi[i].statPemesanan === 'pesanan belum selesai' ? 'selected="selected"' : '' %>>belum selesai</option>
+								</select>
+						</td>
+						<td>
+							<button onclick="saveTransaksi(<%- i %>)">save</button>
+						</td>
+					</tr>
+					<% } %>
+				</table>
+				<template id="template-pesanan">
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><button>save</button></td>
+					</tr>
+				</template>
+				
+			</div>
+			
+		</div>
+		<!--Atur Akun-->
+		<a id="aturakun">.</a><br><br><br><br><br><br>
+		
+		<div class="bodycard" id="body-aturakun">
+			<br><br>
+			<div id="judul">
+				<span style="">Atur Akun</span>
+				<a id="category" href="#aturpemesanan">Atur Pemesanan</a>
+			</div> 
+			<br>
+			<div id="voucher">
+				<a id="voucher-nama">SEARCH</a>
+				<a><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+				<div id="voucher-content">
+					<input id="search-username-input" placeholder="Masukan Username" type="text"><br><br>
+					<button id="search-username-btn">SEARCH</button>
+				</div>
+			</div>
+			<br><br>
+			<div class="scrollmenu" id="scrollmenu">
+				<table id="table-user">
+					<thead>
+						<th>No.</th>
+						<th>username</th>
+						<th>Tipe</th> 
+						<th>Nama Lengkap</th>
+						<th>Nomor HP</th>
+						<th>Email</th>
+						<th>Alamat</th>
+						<th>Delete</th>
+					</thead>
+					<% for(let i = 0; i < users.length; i++){ %>
+						<tr>
+							<td><%- i+1 %></td>
+							<td><%- users[i].Username %></td>
+							<td><%- users[i].peran %></td>
+							<td><%- users[i].namaPengguna %></td>
+							<td><%- users[i].noHP %></td>
+							<td><%- users[i].Email %></td>
+							<td><%- users[i].alamat %></td>
+							<td id="delete"><button id="btn_delete" onclick="deleteUser(<%- i %>, '<%- users[i].Username %>')"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+						</tr>
+					<% } %>
+				</table>
+				<template id="template-user">
+					<tr>
+						<td>No.</td>
+						<td>username</td>
+						<td>Tipe</td> 
+						<td>Nama Lengkap</td>
+						<td>Nomor HP</td>
+						<td>Email</td>
+						<td>Alamat</td>
+					</tr>
+				</template>
+			</div>
+			<a>
+				<button id="btn_tambahakun" type="button">Tambah Akun +</button><br>
+			</a>
+			<div id="form-tambahakun">
+				<table id="table-tambahakun">
+					<tr>
+						<td>Nama</td>
+						<td> :</td>
+						<td><input id="table-tambahakun-masukan" placeholder="Masukan Nama Lengkap" type="text"></td>
+					</tr>
+					<tr>
+						<td>Username</td>
+						<td> :</td>
+						<td><input id="table-tambahakun-masukan" placeholder="Masukan Username" type="text"></td>
+					</tr>
+					<tr>
+						<td>Password</td>
+						<td> :</td>
+						<td><input id="table-tambahakun-masukan" placeholder="Masukan Password" type="text"></td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td> :</td>
+						<td><input id="table-tambahakun-masukan" placeholder="Masukan Email" type="text"></td>
+					</tr>
+					<tr>
+						<td>Alamat</td>
+						<td> :</td>
+						<td><input id="table-tambahakun-masukan" placeholder="Masukan Alamat" type="text"></td>
+					</tr>
+					<tr>
+						<td>Nomor HP</td>
+						<td> :</td>
+						<td><input id="table-tambahakun-masukan" placeholder="Masukan Nomor HP" type="text"></td>
+					</tr>
+					<tr>
+						<td>Tipe Akun</td>
+						<td> :</td>
+						<td><Select id="table-tambahakun-select">
+							<option>Customer</option>
+							<option>Admin</option>
+							<option>Pemilik</option>
+						</Select></td>
+					</tr>
+				</table>
+				<button id="btn_entertambahakun" type="button">Tambah Akun</button><br>
+			</div>
+		</div>
+
+		<script>
+
+			let add = document.getElementById('btn_tambahakun');
+			let addSave = document.getElementById('btn_entertambahakun');
+			let form = document.getElementById('form-tambahakun');
+			let base = document.getElementById('body-aturakun')
+			let searchTransaksi = document.getElementById('voucher-content-btn');
+			let searchUsername = document.getElementById('search-username-btn');
+
+			let users = <%- users.length %>
+			
+			function saveTransaksi(i){
+				i++;
+				const transaksi = document.querySelectorAll('#table-pemesanan tr');
+				const data = transaksi[i].querySelectorAll('td');
+				const statPemesanan = data[6].querySelector('select').selectedOptions[0].textContent;
+				const idTransaksi = data[1].textContent;
+				fetch('/update_statpemesanan', {
+					method: 'POST',
+					body: new URLSearchParams({stat: statPemesanan, idTransaksi})
+				})
+			}
+
+			add.addEventListener('click',function(){
+				if(form.style.width == "fit-content"){
+					form.style.backgroundColor="white";
+					form.style.width = "0px";
+					form.style.height = "0px";
+					base.style.height = "1000px";
+				}else{
+					form.style.backgroundColor="#173695";
+					form.style.width = "fit-content";
+					form.style.height = "fit-content";
+					base.style.height = "1200px";
+				}
+				
+			})
+
+			searchTransaksi.addEventListener('click', (e) => {
+				const query = document.querySelector('#voucher-content-input').value;
+				fetch(`/transaksi?id=${query}`)
+					.then(res => res.json())
+					.then(data => {
+						const table = document.querySelector('#table-pemesanan');
+						const head = table.querySelector('thead');
+						table.textContent='';
+						table.appendChild(head);
+						const template = document.querySelector('#template-pesanan');
+						data.forEach((row, i) => {
+							const node = template.content.cloneNode(true);
+							const td = node.querySelectorAll('td');
+							td[0].textContent = i+1;
+							td[1].textContent = row.idTransaksi;
+							td[2].textContent = row.namaPengguna;
+							td[3].textContent = row.buktiTransfer;
+							td[4].textContent = row.statPembayaran;
+							td[5].textContent = row.progresPesanan;
+							td[6].textContent = row.statPemesanan;
+							table.appendChild(node);
+						})
+					});
+			});
+
+			
+			searchUsername.addEventListener('click', (e) => {
+				const query = document.querySelector('#search-username-input').value;
+				fetch(`/users?username=${query}`)
+					.then(res => res.json())
+					.then(data => {
+						const table = document.querySelector('#table-user');
+						const head = table.querySelector('thead');
+						table.textContent='';
+						table.appendChild(head);
+						const template = document.querySelector('#template-user');
+						data.forEach((row, i) => {
+							const node = template.content.cloneNode(true);
+							const td = node.querySelectorAll('td');
+							td[0].textContent = i+1;
+							td[1].textContent = row.Username;
+							td[2].textContent = row.peran;
+							td[3].textContent = row.namaPengguna;
+							td[4].textContent = row.noHP;
+							td[5].textContent = row.Email;
+							td[6].textContent = row.alamat;
+							table.appendChild(node);
+						})
+					});
+			});
+			
+			addSave.addEventListener('click', () => {
+				const inputs = form.querySelectorAll('input');
+				const name = inputs[0].value;
+				const username = inputs[1].value;
+				const password = inputs[2].value;
+				const email = inputs[3].value;
+				const alamat = inputs[4].value;
+				const nomorHp = inputs[5].value;
+				const tipe = form.querySelector('select')
+					.selectedOptions[0].textContent.toLowerCase();
+				fetch('/register', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded'
+					},
+					body: new URLSearchParams({name, username, password, email, alamat, nomorHp, tipe})
+				}).then(res => {
+					if(res.ok){
+						const tabelBahan = document.querySelector('#table-user');
+						const rowTemplate = document.querySelector('#template-user');
+						const node = rowTemplate.content.cloneNode(true);
+						const td = node.querySelectorAll('td');
+						td[0].textContent = ++users;
+						td[1].textContent = name;
+						td[2].textContent = tipe;
+						td[3].textContent = name;
+						td[4].textContent = nomorHp;
+						td[5].textContent = email;
+						td[6].textContent = alamat;
+						tabelBahan.appendChild(node);
+					}
+				});
+			});
+
+			function deleteUser(i, username){
+				fetch(`/delete_user?username=${username}`,{
+					method: 'DELETE'
+				}).then(res => {
+					if(res.ok) location.reload();
+				})
+			}
+
+			var slideIndex = 1;
+			showSlides(slideIndex);
+
+			function plusSlides(n) {
+			showSlides(slideIndex += n);
+			}
+
+			function currentSlide(n) {
+			showSlides(slideIndex = n);
+			}
+
+			function showSlides(n) {
+			var i;
+			var slides = document.getElementsByClassName("mySlides");
+			var dots = document.getElementsByClassName("dot");
+			setTimeout(showSlides, 3000);
+			if (n > slides.length) {slideIndex = 1}
+			if (n < 1) {slideIndex = slides.length}
+			for (i = 0; i < slides.length; i++) {
+				slides[i].style.display = "none";  
+			}
+			for (i = 0; i < dots.length; i++) {
+				dots[i].className = dots[i].className.replace(" active", "");
+			}
+			slides[slideIndex-1].style.display = "block";
+			dots[slideIndex-1].className += " active";
+			}
+		</script>
+	</body>
+</html>

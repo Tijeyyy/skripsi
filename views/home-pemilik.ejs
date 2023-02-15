@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="shortcut icon" href="/img/logo-papic.png"/>
+		<title>Papic Clothing- Owner Home Page</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="/style/homepemilik.css">
+		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+		<a id="home">.</a>
+	</head>
+	<body>
+		<!-- Header class -->
+		<div class="card3" id="header">
+			<a href="#home"><img id="logo" src="/img/logo-papic.png"></a>
+			<!--Navbar-->
+			<a id="left-navbar" href="#about">About</a>
+			
+			
+			<a id="right-navbar" style="float: right; font-weight:300; margin-right: 100px;" href="/logout"><i class="fa fa-user"></i> Log out</a>
+			
+		</div>
+		<!-- BODY -->
+		<div class="card3" id="body-header">
+			<div style="float: left;">
+				<br><br><br><br><br><br><br><br>
+			<a class="" style="font-weight: 1000; font-size: 40px; font-family: bold; text-decoration: none;">
+				WELCOME BACK,<br>OWNER
+			</a>
+			<br><br><br>
+			<a style=" float: left;">
+				Tempat Custom Baju Online Terbaik
+			</a>
+			<br>
+			<a style="float: left;">
+				Dengan Harga Terjangkau
+			</a>
+			<br>
+			<a href="#model">
+				<button id="btn_startshop" type="button">Atur Stok<br>Model Baju</button><br>
+			</a><br>
+			<a href="#bahan">
+				<button id="btn_startshop" type="button">Atur Stok<br>Bahan Baju</button>
+			</a><br>
+			<a href="#Aksesoris">
+				<button id="btn_startshop" type="button">Atur Stok<br>Aksesoris</button>
+			</a><br>
+			<a href="#Pengiriman">
+				<button id="btn_startshop" type="button">Atur Pengiriman</button>
+			</a><br>
+			<a href="#Laporan">
+				<button id="btn_startshop" type="button">Laporan</button>
+			</a>
+			</div>
+			
+			<div id="carousel">
+				<div id="biglogo">
+					<div class="mySlides fade">
+					  <!--Gambar Dalam Carousel 1-->
+					  <img src="/img/logo-papic.png" style="height: 500px;"><br><br><br><br><br><br><br><br>
+					  <a id="model">.</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<a id="aturakun">.</a><br>
+		
+		
+		<!-- Model Baju -->
+		<div class="bodycard" id="body-space">
+			<br><br>
+			<div id="judul">
+				<span>Model Baju</span>
+				<a id="category" href="#bahan">Bahan Baju</a>
+				<a id="category" href="#Aksesoris">Aksesoris</a>
+				<a id="category" href="#Pengiriman">Pengiriman</a>
+				<a id="category" href="#Laporan">Laporan</a>
+			</div> 
+			<br>
+			
+			<br><br>
+			<div class="scrollmenu" id="scrollmenu">
+				<table class="tableisian" id="table-model">
+					<tr>
+						<td>No.</td>
+						<td>Nama Model</td>
+						<td>Deskripsi</td> 
+						<td>Harga</td> 
+						<td>Gambar</td>
+						<td>Delete</td>
+						
+					</tr>
+					<% for(let i = 0; i < model.length; i++){ %>
+						<tr>
+							<td><%- i+1 %></td>
+							<td><%- model[i].namaModel %></td>
+							<td><%- model[i].deskripsiModel %></td> 
+							<td><%- model[i].hargaModel %></td>
+							<td><img id="imgmodel" src='/uploads/<%- model[i].gambarModel %>'></td>
+							<td><button id="btn_delete" onclick="deleteModel(<%- model[i].idModel %>)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+						</tr>
+					<% } %>
+				</table>
+				<template id='template-model'>
+					<tr>
+						<td>1</td>
+						<td><input type='text'></td> 
+						<td><input type='text'></td>
+						<td><input type='number'></td>
+						<td><input type='file'></td>
+						<td><button>Save</button></td>
+					</tr>
+				</template>
+			</div>
+			<a>
+				<button class="btn_tambah" id="btn_tambahmodel" type="button">Tambah Model Baju</button><br>
+				<a id="bahan"></a>
+			</a>
+		</div>
+
+		<!-- Bahan -->
+		<div class="bodycard" id="body-space">
+			<br><br>
+			<div id="judul">
+				<span style="">Bahan</span>
+				<a id="category" href="#model">Model Baju</a>
+				<a id="category" href="#Aksesoris">Aksesoris</a>
+				<a id="category" href="#Pengiriman">Pengiriman</a>
+				<a id="category" href="#Laporan">Laporan</a>
+			</div> 
+			<br>
+
+			<br><br>
+			<div class="scrollmenu" id="scrollmenu">
+				<table class="tableisian" id="table-bahan">
+					<tr>
+						<td>No.</td>
+						<td>Nama Bahan</td>
+						<td>Deskripsi</td> 
+						<td>Stok</td> 
+						<td>Harga Beli</td>
+						<td>Harga Jual</td>
+						<td>Gambar</td>
+						<td>Delete</td>
+					</tr>
+					<% for(let i = 0; i < bahan.length; i++){ %>
+						<tr>
+							<td><%- i+1 %></td>
+							<td><%- bahan[i].namaBahanBaku %></td>
+							<td><%- bahan[i].deskripsiBahanBaku %></td>
+							<td><%- bahan[i].stock %></td>
+							<td><%- bahan[i].hargaBeliBahan %></td>
+							<td><%- bahan[i].hargaJualBahan %></td>
+							<td><img id="imgmodel" src="/uploads/<%- bahan[i].gambarBahanBaku %>"></td>
+							<td><button id="btn_delete" onclick="deleteBahan(<%- bahan[i].idBahanBaku%>)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+						</tr>
+					<% } %>
+				</table>
+				<template id='template-bahan'>
+					<tr>
+						<td>1</td>
+						<td><input type='text'></td> 
+						<td><input type='text'></td>
+						<td><input type='number'></td>
+						<td><input type='number'></td>
+						<td><input type='number'></td>
+						<td><input type='file'></td>
+						<td><button>Save</button></td>
+					</tr>
+				</template>
+			</div>
+			<a>
+				<button class="btn_tambah" id="btn_tambahbahan" type="button">Tambah Bahan</button><br>
+			</a>
+			<div id="form-tambahakun">
+				
+				<button id="btn_entertambahakun" type="button">Tambah Akun</button><br>
+				<a id="Aksesoris">.</a>
+			</div>
+		</div>
+
+		<!-- Aksesoris -->
+		<div class="bodycard" id="body-space">
+			<br><br>
+			<div id="judul">
+				<span style="">Aksesoris</span>
+				<a id="category" href="#model">Model Baju</a>
+				<a id="category" href="#bahan">Bahan Baju</a>
+				<a id="category" href="#Pengiriman">Pengiriman</a>
+				<a id="category" href="#Laporan">Laporan</a>
+			</div> 
+			<br>
+		
+			<br><br>
+			<div class="scrollmenu" id="scrollmenu">
+				<table class="tableisian" id="table-aksesoris">
+					<tr>
+						<td>No.</td>
+						<td>Nama Aksesoris</td>
+						<td>Deskripsi</td> 
+						<td>Stok</td> 
+						<td>Harga Beli</td>
+						<td>Harga Jual</td>
+						<td>Gambar</td>
+						<td>Delete</td>
+					</tr>
+					<% for(let i = 0; i < aksesoris.length; i++){ %>
+						<tr>
+							<td><%- i+1 %></td>
+							<td><%= aksesoris[i].namaAksesoris %></td>
+							<td><%= aksesoris[i].deskripsiAksesoris %></td>
+							<td><%= aksesoris[i].stock %></td>
+							<td><%= aksesoris[i].hargaBeliAksesoris %></td>
+							<td><%= aksesoris[i].hargaJualAksesoris %></td>
+							<td><img id="imgmodel" src='/uploads/<%- aksesoris[i].gambarAksesoris %>'></td>
+							<td><button id="btn_delete" onclick="deleteAksesoris(<%- aksesoris[i].idAksesoris %>)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+						</tr>
+					<% } %>
+				</table>
+				<template id='template-aksesoris'>
+					<tr>
+						<td></td>
+						<td><input type='text'></td>
+						<td><input type='text'></td> 
+						<td><input type='number'></td>
+						<td><input type='number'></td>
+						<td><input type='number'></td>
+						<td><input type='file'></td>
+						<td><button>Save</button></td>
+					</tr>
+				</template>
+			</div>
+			<a>
+				<button class="btn_tambah" id="btn_tambahaksesoris" type="button">Tambah Aksesoris</button><br>
+			</a>
+
+			<div id="form-tambahakun">
+				
+				<button id="btn_entertambahakun" type="button">Tambah Akun</button><br>
+				<a id="Pengiriman">.</a>
+			</div>
+		</div>
+		
+		<!-- pengiriman -->
+		<div class="bodycard" id="body-space">
+			<br><br>
+			<div id="judul">
+				<span style="">Pengiriman</span>
+				<a id="category" href="#model">Model Baju</a>
+				<a id="category" href="#bahan">Bahan Baju</a>
+				<a id="category" href="#Aksesoris">Aksesoris</a>
+				<a id="category" href="#Laporan">Laporan</a>
+			</div> 
+			<br>
+	
+			<br><br>
+			<div class="scrollmenu" id="scrollmenu">
+				<table class="tableisian" id="table-stat-pengiriman">
+					<thead>
+						<th>No.</th>
+						<th>Nomor Transaksi</th>
+						<th>Nomor Pembeli</th> 
+						<th>Tanggal</th> 
+						<th>Status Pesanan</th>
+						<th>Kurir</th>
+						<th>Delete</th>
+					</thead>
+					<% for(let i = 0; i < pengiriman.length; i++){ %>
+						<tr>
+							<td><%- i+1 %></td>
+							<td><%- pengiriman[i].idTransaksi %></td>
+							<td><%- pengiriman[i].idPengguna %></td> 
+							<td><%- pengiriman[i].tglTransaksi %></td>
+							<td><select class="select2">
+								<option <%- pengiriman[i].statPemesanan === 'belum dikirim' ? 'selected="selected"' : ''%>>belum dikirim</option>
+								<option <%- pengiriman[i].statPemesanan === 'sudah dikirim' ? 'selected="selected"' : ''%>>sudah dikirim</option>
+							</select></td>
+							<td><select class="select2">
+								<% for(let j = 0; j < kurir.length; j++){ %>
+									<option value="<%- kurir[j].idKurir %>" <%- pengiriman[i].idKurir === kurir[j].idKurir ? 'selected="selected"' : '' %>><%- kurir[j].namaKurir %></option>
+								<% } %>
+							</select></td>
+							<td><button onclick="updateData(<%- i %>, <%- pengiriman[i].idTransaksi %>)">save</button></td>
+						</tr>
+					<% } %>
+				</table>
+			</div>
+			<div id="form-tambahakun">
+				<button class="btn_tambah" id="btn_tambahakun" type="button"></button><br>
+				<a id="Laporan">.</a>
+			</div>
+		</div>
+
+		<!-- Laporan -->
+		<div class="bodycard" id="body-space">
+			<br><br>
+			<div id="judul">
+				<span style="">Laporan</span>
+				<a id="category" href="#model">Model Baju</a>
+				<a id="category" href="#bahan">Bahan Baju</a>
+				<a id="category" href="#Aksesoris">Aksesoris</a>
+				<a id="category" href="#Pengiriman">Pengiriman</a>
+			</div> 
+			<br>
+
+			<br><br>
+			<div class="scrollmenu" id="scrollmenu">
+				<table class="tableisian" id="table-laporan">
+					<thead>
+						<th>No.</th>
+						<th>No. Transaksi</th>
+						<th>Bahan</th>
+						<th>Model Baju</th> 
+						<th>Aksesoris</th> 
+						<th>Warna</th> 
+						<th>Harga Total</th>
+						<th>Total Beli</th>
+					</thead>
+					<tbody>
+						<% for(let i = 0; i < laporan.length; i++){ %>
+							<tr>
+								<td><%- i+1 %></td>
+								<td><%- laporan[i].idTransaksi %></td>									
+								<td><%- laporan[i].namaBahanBaku %></td>
+								<td><%- laporan[i].namaModel %></td>
+								<td><%- laporan[i].namaAksesoris %></td>
+								<td><%- laporan[i].deskripsiModel %></td>
+								<td><%- laporan[i].hargaTotal %></td>
+								<td><%- laporan[i].totalBeli %></td>
+							</tr>
+						<% } %>
+					</tbody>
+				</table>
+	
+				<!-- <span>Total pemasukan: <%- pemasukan.total %></span> -->
+			</div>
+			<div id="form-tambahakun">
+				<button id="btn_entertambahakun" type="button"></button><br>
+			</div>
+		</div>
+
+		<br>
+		<div class="contact">
+			<p style="font-family: bold; font-size: 40px; text-align: center;color: white;">
+				Get our news in this social media
+			</p>
+			<a href="https://id-id.facebook.com/" target="_blank"><i class="fa fa-facebook-square"></i></a>
+			<a href="https://twitter.com/login" target="_blank"><i class="fa fa-twitter"></i></a>
+			<a href="https://vk.com/" target="_blank"><i class="fa fa-vk"></i></a>
+			<a href="https://id-id.facebook.com/" target="_blank"><i class="fa fa-instagram"></i></a>
+			<a href="https://www.youtube.com/?gl=ID" target="_blank"><i class="fa fa-youtube-play"></i></a>
+		</div>
+		<br><br>
+		<div class="footer">
+			<table>
+				<tr>
+					<th>
+						<a href="#home"><img id="logobawah" src="img/logo-papic.png"></a>
+					</th>
+					<th>
+						<br>
+					</th>
+					<th>
+						<br>
+					</th>
+					<th>
+						<div class="footer-text" >
+							<br><br><br><br>
+							<p>Legal</p>
+							<a href="Cookies.ejs">Cookies Policy</a><br><br>
+							<a href="privacy.ejs">Privacy Policy</a>
+						</div>
+					</th>
+					<th>
+						<div class="footer-text">
+							<br><br><br><br>
+							<p>Untuk Info Lebih Lanjut</p>
+							<a><i class="fa fa-map-marker "></i>Leuwi Anyar VI, Kota Bandung</a><br><br>
+							<a><i class="fa fa-phone "></i>Phone: (+62)851-5533-6850</a><br><br>
+							<a><i class="fa fa-envelope-o "></i>papicclothing@gmail.com</a>
+						</div>
+					</th>
+				</tr>
+			</table>
+			<a id="about">.</a>
+		</div>
+
+		<script>
+			let addAkun = document.getElementById('btn_tambahakun');
+			let addBahan = document.getElementById('btn_tambahbahan');
+			let addAksesoris = document.getElementById('btn_tambahaksesoris');
+			let addModel = document.getElementById('btn_tambahmodel');
+			let form = document.getElementById('form-tambahakun');
+			let base = document.getElementById('body-space')
+			let nBahan = <%= bahan.length %>;
+			let nAksesoris = <%= aksesoris.length %>;
+			let nModel = <%= model.length %>;
+
+			addAkun.addEventListener('click',function(){
+				if(form.style.width == "fit-content"){
+					form.style.backgroundColor="white";
+					form.style.width = "0px";
+					form.style.height = "0px";
+					base.style.height = "1000px";
+				}else{
+					form.style.backgroundColor="#173695";
+					form.style.width = "fit-content";
+					form.style.height = "fit-content";
+					base.style.height = "1200px";
+				}
+				
+			})
+			addBahan.addEventListener('click', (e) => {
+				const tabelBahan = document.querySelector('#table-bahan');
+				const rowTemplate = document.querySelector('#template-bahan');
+				const node = rowTemplate.content.cloneNode(true);
+				const td = node.querySelectorAll('td');
+				const input = node.querySelectorAll('input');
+				td[0].textContent = ++nBahan;
+				td[7].querySelector('button').addEventListener('click', (e) => {
+					const fd = new FormData();
+					fd.append('name', input[0].value);
+					fd.append('desc', input[1].value);
+					fd.append('stock', input[2].value);
+					fd.append('buy', input[3].value);
+					fd.append('sell', input[4].value);
+					fd.append('img', input[5].files[0]);
+					fetch('/add_bahan', {
+						method: 'POST',
+						body: fd
+					}).then((res) => {
+						if(res.ok) location.reload();
+					});
+				});
+				tabelBahan.appendChild(node);
+			});
+			addAksesoris.addEventListener('click', (e) => {
+				const tabelBahan = document.querySelector('#table-aksesoris');
+				const rowTemplate = document.querySelector('#template-aksesoris');
+				const node = rowTemplate.content.cloneNode(true);
+				const td = node.querySelectorAll('td');
+				const input = node.querySelectorAll('input');
+				td[0].textContent = ++nAksesoris;
+				td[7].querySelector('button').addEventListener('click', (e) => {
+					const fd = new FormData();
+					fd.append('name', input[0].value);
+					fd.append('desc', input[1].value);
+					fd.append('stock', +input[2].value);
+					fd.append('buy', +input[3].value);
+					fd.append('sell', +input[4].value);
+					fd.append('img', input[5].files[0]);
+					fetch('/add_aksesoris', {
+						method: 'POST',
+						body: fd
+					}).then((res) => {
+						if(res.ok) location.reload()
+					});
+				});
+				tabelBahan.appendChild(node);
+			});
+			addModel.addEventListener('click', (e) => {
+				const tabelBahan = document.querySelector('#table-model');
+				const rowTemplate = document.querySelector('#template-model');
+				const node = rowTemplate.content.cloneNode(true);
+				const td = node.querySelectorAll('td');
+				const input = node.querySelectorAll('input');
+				td[0].textContent = ++nAksesoris;
+				td[5].querySelector('button').addEventListener('click', (e) => {
+					const fd = new FormData();
+					fd.append('name', input[0].value);
+					fd.append('desc', input[1].value);
+					fd.append('price', +input[2].value);
+					fd.append('img', input[3].files[0]);
+					fetch('/add_model', {
+						method: 'POST',
+						body: fd
+					}).then((res) => {
+						if(res.ok) location.reload()
+					});
+				});
+				tabelBahan.appendChild(node);
+			});
+
+		
+			
+
+			function updateData(i, idTransaksi){
+				const row = document.querySelector('#table-stat-pengiriman').querySelectorAll('tbody tr')[i].querySelectorAll('td');
+				const statPemesanan = row[4].querySelector('select').selectedOptions[0].textContent;
+				const idKurir = row[5].querySelector('select').selectedOptions[0].value;
+				fetch('/update_pengiriman', {
+					method: 'POST',
+					body: new URLSearchParams({idTransaksi, stat: statPemesanan, idKurir})
+				})
+			}
+			function deleteModel(idModel) {
+				fetch(`/delete_model?id=${idModel}`, {
+					method: 'DELETE'
+				}).then(res => {
+					if(res.ok) location.reload();
+				})
+			}
+			function deleteBahan(idBahan) {
+				fetch(`/delete_bahan?id=${idBahan}`, {
+					method: 'DELETE'
+				}).then(res => {
+					if(res.ok) location.reload();
+				})
+			}
+			function deleteAksesoris(idModel) {
+				fetch(`/delete_aksesoris?id=${idModel}`, {
+					method: 'DELETE'
+				}).then(res => {
+					if(res.ok) location.reload();
+				})
+			}
+			let slideIndex = 1;
+			showSlides(slideIndex);
+			function plusSlides(n) {
+			showSlides(slideIndex += n);
+			}
+			function currentSlide(n) {
+			showSlides(slideIndex = n);
+			}
+			function showSlides(n) {
+			let i;
+			let slides = document.getElementsByClassName("mySlides");
+			let dots = document.getElementsByClassName("dot");
+			setTimeout(showSlides, 3000);
+			if (n > slides.length) {slideIndex = 1}
+			if (n < 1) {slideIndex = slides.length}
+			for (i = 0; i < slides.length; i++) {
+				slides[i].style.display = "none";  
+			}
+			for (i = 0; i < dots.length; i++) {
+				dots[i].className = dots[i].className.replace(" active", "");
+			}
+			slides[slideIndex-1].style.display = "block";
+			dots[slideIndex-1].className += " active";
+			}
+		</script>
+	</body>
+</html>

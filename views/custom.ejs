@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<link rel="shortcut icon" href="/img/logo-papic.png"/>
+		<title>Papic Clothing - Custom</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="/style/Catalog.css">
+		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  </head>
+	<body>
+		<!-- Header class -->
+		
+		<a id="home">home</a>
+		<div class="card3" id="header">
+			<a href="#home"><img id="logo" src="../img/logo-papic.png"></a>
+			<!--Navbar-->
+			<a id="left-navbar" style="cursor: pointer;" href="/">Home</a>
+			<a id="left-navbar" href="#aboutus">About</a>
+			<a id="right-navbar" style="float: right; font-weight:300; margin-right: 100px; margin-bottom: 10px; font-size: 24px;" href="/logout"><i class="fa fa-sign-in"></i> Log Out</a>
+		</div>
+		<!-- BODY -->
+		<div class="card3" id="body-header">
+			<a id="left-navbar" >Pilih produk yang akan anda beli</a>
+		</div>
+			<a id="modelbaju"></a>
+		<!-- 1st part: model -->
+		<div class="card3" id='body-container-model'>
+			<div id="judul">
+				<span>Model Baju</span>
+				<a id="category" href="#modelbaju">Model Baju</a>
+				<a id="category" href="#Bahan">Bahan Baju</a>
+				<a id="category" href="#ukuran">Ukuran Baju</a>
+				<a id="category" href="#aksesoris">Aksesoris</a>
+			</div>
+			<div id="model-display">
+				<% for(let i = 0; i < models.length; i++){ %>
+					<div class="card-model-baju" onclick="pilihModelBaju(<%- i %>, <%- models[i].idModel %>)">
+						<img id="img_model" src="/uploads/<%- models[i].gambarModel %>">
+						<h3><%- models[i].namaModel %></h3>
+						<p><%- models[i].deskripsiModel %></p>
+						<span><%- models[i].hargaModel %></span>
+					</div>
+				<% } %>
+			</div>
+			<button id="prev-model" style="display: none">Previous Page</button>
+			<button id="next-model">Next Page</button><a id="Bahan"></a>
+		</div>
+
+		<!-- 2nd part: bahan -->
+		<div class='card3' id="body-container">
+			<div id="judul">
+				<span>Bahan Baju</span>
+				<a id="category" href="#modelbaju">Model Baju</a>
+				<a id="category" href="#Bahan">Bahan Baju</a>
+				<a id="category" href="#ukuran">Ukuran Baju</a>
+				<a id="category" href="#aksesoris">Aksesoris</a>
+			</div>
+			<h2 id="bahan">Pilih bahan:</h2>
+			<select id="select-bahan">
+				<% for(let i = 0; i < bahan.length; i++){ %>
+					<option id="bahanbaju" value="<%- bahan[i].idBahanBaku %>"><%- bahan[i].namaBahanBaku %></option>
+				<% } %>
+			</select><a id="ukuran"></a>
+		</div>
+
+
+		<!-- 3rd part: model size -->
+		<div class="card3" id='body-container'>
+			<div id="judul">
+				<span>Ukuran Baju</span>
+				<a id="category" href="#modelbaju">Model Baju</a>
+				<a id="category" href="#Bahan">Bahan Baju</a>
+				<a id="category" href="#ukuran">Ukuran Baju</a>
+				<a id="category" href="#aksesoris">Aksesoris</a>
+			</div>
+			<h2 id='ukuran'>Pilih Ukuran:</h2>
+			<select id="select-ukuran">
+				<option>XXS</option>
+				<option>XS</option>
+				<option>S</option>
+				<option selected="selected">M</option>
+				<option>L</option>
+				<option>XL</option>
+				<option>XXL</option>
+				<option>3XL</option>
+			</select><a id="aksesoris"></a>
+		</div>
+
+		<!-- 4th part: aksesoris -->
+		<div class="card3" id='body-container'>
+			<div id="judul">
+				<span>Aksesoris</span>
+				<a id="category" href="#modelbaju">Model Baju</a>
+				<a id="category" href="#Bahan">Bahan Baju</a>
+				<a id="category" href="#ukuran">Ukuran Baju</a>
+				<a id="category" href="#aksesoris">Aksesoris</a>
+			</div>
+			<h2 id="aksesoris">Pilih Aksesoris:</h2>
+			<select id="select-aksesoris">
+				<% for(let i = 0; i < aksesoris.length; i++){ %>
+					<option value="<%- aksesoris[i].idAksesoris %>"><%- aksesoris[i].namaAksesoris %></option>
+				<% } %>
+			</select><br>
+			<button id='navigate-pay'>Lanjut Bayar</button>
+		</div>
+
+		<a id="aboutus" style="color: white;"></a>
+		<br>
+		<div class="contact">
+			<p style="font-family: bold; font-size: 40px; text-align: center;color: white;">
+				Get our news in this social media
+			</p>
+			<a href="https://id-id.facebook.com/" target="_blank"><i class="fa fa-facebook-square"></i></a>
+			<a href="https://twitter.com/login" target="_blank"><i class="fa fa-twitter"></i></a>
+			<a href="https://vk.com/" target="_blank"><i class="fa fa-vk"></i></a>
+			<a href="https://id-id.facebook.com/" target="_blank"><i class="fa fa-instagram"></i></a>
+			<a href="https://www.youtube.com/?gl=ID" target="_blank"><i class="fa fa-youtube-play"></i></a>
+		</div>
+		<br><br>
+		<div class="footer">
+			<table>
+				<tr>
+					<th>
+						<a><img id="logobawah" src="img/logo-papic.png"></a>
+					</th>
+					<th>
+						<br>
+					</th>
+					<th>
+						<br>
+					</th>
+					<th>
+						<div class="footer-text" >
+							<br><br><br><br>
+							<p>Legal</p>
+							<a href="pages/Cookies.html">Cookies Policy</a><br><br>
+							<a href="pages/privacy.html">Privacy Policy</a>
+						</div>
+					</th>
+					<th>
+						<div class="footer-text">
+							<br><br><br><br>
+							<p>Support</p>
+							<a href="pages/Faq.html">FAQ</a><br><br>
+							<a href="mailto:jayasejahtera@gmail.com">Contact Support</a><br><br>
+							<a href="Viscovery_Online_Terms_and_Conditions.pdf" target="_blank">Terms of Sevice</a>
+						</div>
+					</th>
+				</tr>
+			</table>
+					
+		</div>
+		<script>
+			let models = <%- models.length %>;
+			let currentPage = 1;
+			const modelContainer = document.querySelector('#model-display');
+			const prevModel = document.querySelector('#prev-model')
+			const nextModel = document.querySelector('#next-model')
+			let selectedModelId;
+			if(models < <%- modelPages %>){
+				document.getElementById("next-model").style.display = 'none';
+			}
+			prevModel.addEventListener('click', () => {
+				if(currentPage > 1){
+					fetch(`/models?page=${--currentPage}`).then(res => res.text()).then(html => modelContainer.innerHTML = html)
+					nextModel.style.display = '';
+				}
+			});
+			nextModel.addEventListener('click', () =>{
+				if(currentPage < <%- modelPages %>){
+					fetch(`/models?page=${++currentPage}`).then(res => res.text()).then(html => modelContainer.innerHTML = html)
+					prevModel.style.display = '';
+				}
+			});
+			function pilihModelBaju(i, id){
+				selectedModelId = id;
+			}
+			document.querySelector('#navigate-pay').addEventListener('click', () => {
+				// validate everything
+				if(selectedModelId){
+					fetch('/custom', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/x-www-form-urlencoded'
+						},
+						body: new URLSearchParams({
+							modelId: selectedModelId,
+							bahanId: document.querySelector('#select-bahan').selectedOptions[0].value,
+							size: document.querySelector('#select-ukuran').selectedOptions[0].textContent,
+							aksesorisId: document.querySelector('#select-aksesoris').selectedOptions[0].value
+						})
+					}).then(res => {
+						if(res.ok) return res.json();
+					}).then(data => {
+						location.href = `/pay?id=${data.transactionId}`
+					})
+				}
+			})
+		</script>
+	</body>
+</html>

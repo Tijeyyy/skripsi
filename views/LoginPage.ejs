@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="shortcut icon" href="/img/logo-papic.png">
+		<title>Papic Food - Login Page</title>
+		<link rel="stylesheet" href="/style/loginPageCss.css">
+		
+	</head>
+	<body>
+		<!--BODY-->
+		<div class="container">
+				<form id="form1" method="POST">
+					<h1 id="test1">Sign in</h1>
+					<span>Sign in akun anda</span>
+					<input id="username" type="text" placeholder="Username" name='username'/>
+					<input id="password" type="password" placeholder="Password" name='password'/>
+					<input id="email" type="email" placeholder="Email" />
+					<a id="wrong" style="<%= 'display: ' + (error ? 'block' : 'none') %>" >Salah Username atau Password</a>
+					<a><input class="btn" type="submit" id="signin" value='Sign In'></a>
+					<a id="back" href="/"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a>
+				</form>
+		</div>
+		
+		<!--REGISTER-->
+		<div class="container">
+			<div id="form-tambahakun">
+				<form id="form1" method="POST">		
+				<h1 id="test1">Register</h1>
+				<span>Bikin Akun</span>					
+				<td><input id="table-tambahakun-masukan" placeholder="Masukan Nama Lengkap" type="text"></td>
+				<td><input id="table-tambahakun-masukan" placeholder="Masukan Username" type="text"></td>	
+				<td><input id="table-tambahakun-masukan" placeholder="Masukan Password" type="password"></td>						
+				<td><input id="table-tambahakun-masukan" placeholder="Masukan Email" type="text"></td>
+				<td><input id="table-tambahakun-masukan" placeholder="Masukan Alamat" type="text"></td>
+				<td><input id="table-tambahakun-masukan" placeholder="Masukan Nomor HP" type="text"></td>
+				<td><Select id="table-tambahakun-select"><option>Customer</option></Select>
+				</td>				
+				<button onclick="javascript:alert('Akun berhasil dibikin, Anda dapat langsung Sign In')" id="btn_entertambahakun" type="button">Tambah Akun</button><br>
+				
+			</div>
+		</div>
+	
+
+		<script>
+			var fps = document.getElementById('wrong');
+			var sended = document.getElementById('sended');
+			let add = document.getElementById('btn_tambahakun');
+			let addSave = document.getElementById('btn_entertambahakun');
+			let form = document.getElementById('form-tambahakun');
+			
+			addSave.addEventListener('click', () => {
+				const inputs = form.querySelectorAll('input');
+				const name = inputs[0].value;
+				const username = inputs[1].value;
+				const password = inputs[2].value;
+				const email = inputs[3].value;
+				const alamat = inputs[4].value;
+				const nomorHp = inputs[5].value;
+				const tipe = form.querySelector('select')
+					.selectedOptions[0].textContent.toLowerCase();
+				fetch('/register', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded'
+					},
+					body: new URLSearchParams({name, username, password, email, alamat, nomorHp, tipe})
+				}).then(res => {
+					if(res.ok){
+						const tabelBahan = document.querySelector('#table-user');
+						const rowTemplate = document.querySelector('#template-user');
+						const node = rowTemplate.content.cloneNode(true);
+						const td = node.querySelectorAll('td');
+						td[0].textContent = ++users;
+						td[1].textContent = name;
+						td[2].textContent = tipe;
+						td[3].textContent = name;
+						td[4].textContent = nomorHp;
+						td[5].textContent = email;
+						td[6].textContent = alamat;
+						tabelBahan.appendChild(node);
+					}
+				});
+			});
+		</script>
+    </body>
+</html>
+
+
